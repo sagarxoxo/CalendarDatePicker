@@ -17,28 +17,27 @@ export default function CalendarDatePicker() {
   const [showCalender, setShowCalender] = useState(false);
 
   function handleCalendarChange(item) {
-    item &&
-      setState({
-        ...state,
-        selection1: {
-          startDate: item?.selection1?.startDate,
-          endDate: addDays(item?.selection1?.startDate, 7),
-          dateDivide: [
-            [0, 1, 2, 3, 4, 5, 6].map((data) => {
-              const date = addDays(item?.selection1?.startDate, data)
-                .toString()
-                .split(" ");
-              return {
-                date: date[2],
-                day: date[0],
-                month: date[1],
-                year: date[3],
-              };
-            }),
-          ],
-          key: "selection1",
-        },
-      });
+    setState({
+      ...state,
+      selection1: {
+        startDate: item?.selection1?.startDate,
+        endDate: addDays(item?.selection1?.startDate, 7),
+        dateDivide: [
+          [0, 1, 2, 3, 4, 5, 6].map((data) => {
+            const date = addDays(item?.selection1?.startDate, data)
+              .toString()
+              .split(" ");
+            return {
+              date: date[2],
+              day: date[0],
+              month: date[1],
+              year: date[3],
+            };
+          }),
+        ],
+        key: "selection1",
+      },
+    });
   }
 
   function todayChange() {
@@ -70,6 +69,7 @@ export default function CalendarDatePicker() {
         selection1: {
           startDate: addDays(prevState.selection1?.startDate, moveTo),
           endDate: addDays(prevState.selection1?.startDate, moveTo + 7),
+          key: "selection1",
           dateDivide: [
             [0, 1, 2, 3, 4, 5, 6].map((data) => {
               const date = addDays(
@@ -92,6 +92,7 @@ export default function CalendarDatePicker() {
   }
 
   const [displayDate, setDisplayDate] = useState();
+
   useEffect(() => {
     const dateDivideStart = state?.selection1?.startDate?.toString().split(" ");
     const dateDivideEnd = state?.selection1?.endDate?.toString().split(" ");
@@ -103,6 +104,7 @@ export default function CalendarDatePicker() {
   }, [state]);
 
   console.log(state.selection1.dateDivide);
+  console.log("f", state);
 
   return (
     <div>
@@ -140,7 +142,8 @@ export default function CalendarDatePicker() {
             handleCalendarChange(item);
             console.log("i", item);
           }}
-          moveRangeOnFirstSelection={true}
+          moveRangeOnFirstSelection={false}
+          retainEndDateOnFirstSelection={false}
           ranges={[state.selection1]}
           rangeColors={["#ef3b62"]}
         />
