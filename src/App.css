@@ -36,3 +36,25 @@
     transform: rotate(360deg);
   }
 }
+
+
+.rdrInRange{
+  background-color: #f0f0f0 !important;
+}
+
+.rdrDayNumber span{
+  color: #2a2d42 !important;
+}
+
+.rdrStartEdge, .rdrEndEdge{
+  border-radius: 1.042em;
+}
+
+.rdrDefinedRangesWrapper, .rdrDateDisplayWrapper{
+  display: none;
+}
+
+.rdrCalendarWrapper{
+  border: 2px solid #2a2d42;
+  border-radius: 0.5rem;
+}
