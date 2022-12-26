@@ -8,7 +8,7 @@ export default function CalendarDatePicker() {
   const [state, setState] = useState({
     selection1: {
       startDate: addDays(new Date(), 0),
-      endDate: addDays(new Date(), 7),
+      endDate: addDays(new Date(), 6),
       key: "selection1",
       dateDivide: [],
     },
@@ -21,7 +21,7 @@ export default function CalendarDatePicker() {
       ...state,
       selection1: {
         startDate: item?.selection1?.startDate,
-        endDate: addDays(item?.selection1?.startDate, 7),
+        endDate: addDays(item?.selection1?.startDate, 6),
         dateDivide: [
           [0, 1, 2, 3, 4, 5, 6].map((data) => {
             const date = addDays(item?.selection1?.startDate, data)
@@ -68,7 +68,7 @@ export default function CalendarDatePicker() {
         ...prevState,
         selection1: {
           startDate: addDays(prevState.selection1?.startDate, moveTo),
-          endDate: addDays(prevState.selection1?.startDate, moveTo + 7),
+          endDate: addDays(prevState.selection1?.startDate, moveTo + 6),
           key: "selection1",
           dateDivide: [
             [0, 1, 2, 3, 4, 5, 6].map((data) => {
